@@ -31,6 +31,39 @@ const users = [
     },
 ];
 
+const coworkers = [
+    {
+        "id": "1",
+        "lastName": "Pekar",
+        "roomNumber": "13",
+        "department": "System Administrator",
+        "computerType": "Asus Pro"
+    },
+    {
+        "id": "2",
+        "lastName": "Kobal",
+        "roomNumber": "21",
+        "department": "Software Engineer",
+        "computerType": "Dell XPS"
+    },
+    {
+        "id": "3",
+        "lastName": "Trykur",
+        "roomNumber": "34",
+        "department": "IT Support",
+        "computerType": "HP EliteBook"
+    },
+    {
+        "id": "4",
+        "lastName": "Makivchuk",
+        "roomNumber": "42",
+        "department": "Network Engineer",
+        "computerType": "Lenovo ThinkPad"
+    }
+];
+
+
 module.exports = {
     users,
+    coworkers
 };
