@@ -4,6 +4,7 @@ const { port } = require('./config');
 const usersRouter = require('./routes/users.route');
 const coworkersRouter = require('./routes/coworkers.route');
 const app = express();
+const errorHandler = require('./middlewares/errorHandler');
 
 app.use(express.json());
 
@@ -16,6 +17,8 @@ mongoose.connect('mongodb://localhost:27017/coworkersDB', {
 
 app.use('/users', usersRouter);
 app.use('/coworkers', coworkersRouter);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
