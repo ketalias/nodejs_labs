@@ -1,20 +1,22 @@
 const Joi = require("joi");
 
 const CoworkerSchema = Joi.object({
-  id: Joi.string().required(),
-  lastName: Joi.string().min(1).required(),
-  roomNumber: Joi.string().min(1).required(),
-  department: Joi.string().min(1).required(),
-  computerType: Joi.string().min(1).required(),
+  lastName: Joi.string().min(1).trim().required(),
+  roomNumber: Joi.number().required(),
+  department: Joi.string().min(1).trim().allow(null),
+  computerType: Joi.string().min(1).trim().allow(null),
 });
 
-const CoworkerCreateSchema = Joi.array().items(CoworkerSchema).min(1);
+const CoworkerCreateSchema = Joi.alternatives().try(
+  CoworkerSchema,
+  Joi.array().items(CoworkerSchema).min(1)
+);
+
 const CoworkerUpdateSchema = Joi.object({
-  id: Joi.string().optional(),
-  lastName: Joi.string().min(1).optional(),
-  roomNumber: Joi.string().min(1).optional(),
-  department: Joi.string().min(1).optional(),
-  computerType: Joi.string().min(1).optional(),
-});
+  lastName: Joi.string().min(1).trim(),
+  roomNumber: Joi.number(),
+  department: Joi.string().min(1).trim().allow(null),
+  computerType: Joi.string().min(1).trim().allow(null),
+}).min(1);
 
 module.exports = { CoworkerCreateSchema, CoworkerUpdateSchema };
