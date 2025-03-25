@@ -4,9 +4,11 @@ const { port } = require('./config');
 const usersRouter = require('./routes/users.route');
 const coworkersRouter = require('./routes/coworkers.route');
 const app = express();
+const { authenticationCheck } = require('./middlewares/auth.middleware');
 const errorHandler = require('./middlewares/errorHandler');
 
 app.use(express.json());
+app.use(authenticationCheck);
 
 mongoose.connect('mongodb://localhost:27017/coworkersDB', {
     useNewUrlParser: true,

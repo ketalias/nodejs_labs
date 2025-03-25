@@ -7,7 +7,7 @@ const CoworkerSchema = Joi.object({
     .trim()
     .pattern(/^[a-zA-Z'-]+$/)
     .required(),
-  roomNumber: Joi.integer().min(1).max(9999).required(),
+  roomNumber: Joi.number().integer().min(1).max(9999).required(),
   department: Joi.string().min(1).trim().allow(null),
   computerType: Joi.string()
     .min(1)
